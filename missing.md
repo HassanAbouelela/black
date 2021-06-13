@@ -9,3 +9,4 @@
   - test_suite
 - Any links in the docs to `pyproject.toml` should reference `example-pyproject.toml`
   instead.
+- CI
