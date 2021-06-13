@@ -1,9 +1,14 @@
-# Example configuration for Black.
+[tool.poetry]
+name = "black"
+version = "0.0.0"
+description = "The uncompromising code formatter."
+authors = ["Łukasz Langa <lukasz@langa.pl>"]
+license = "MIT"
 
-# NOTE: you have to use single-quoted strings in TOML for regular expressions.
-# It's the equivalent of r-strings in Python.  Multiline strings are treated as
-# verbose regular expressions by Black.  Use [ ] to denote a significant space
-# character.
+[tool.poetry.scripts]
+black = "black:patched_main"
+blackd = "blackd:patched_main"
+black-primer = "black_primer.cli:main"
 
 [tool.black]
 line-length = 88
@@ -18,10 +23,6 @@ extend-exclude = '''
 )/
 '''
 
-
-# Build system information below.
-# NOTE: You don't need this in your own Black configuration.
-
 [build-system]
 requires = ["setuptools>=41.0", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
@@ -32,3 +33,34 @@ optional-tests = [
   "no_python2: run when `python2` extra NOT installed",
   "no_blackd: run when `d` extra NOT installed",
 ]
+
+[tool.poetry.dependencies]
+python = "^3.6.2"
+appdirs = "*"
+click = ">=7.1.2"
+mypy_extensions = ">=0.4.3"
+pathspec = ">=0.8.1"
+regex = ">=2020.1.8"
+toml = ">=0.10.1"
+typed-ast = "==1.4.2"
+typing_extensions = { "markers" = "python_version < '3.8'", "version" = ">=3.7.4" }
+dataclasses = { "markers" = "python_version < '3.7'", "version" = ">0.6" }
+
+[tool.poetry.dev-dependencies]
+aiohttp = ">=3.6.0"
+aiohttp-cors = ">=0.4.0"
+Sphinx = ">=3.1.2"
+coverage = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+mypy = ">=0.812"
+pre-commit = "*"
+readme_renderer = "*"
+MyST-Parser = ">=0.13.7"
+sphinxcontrib-programoutput = ">=0.17"
+sphinx-copybutton = ">=0.3.0"
+setuptools = ">=39.2.0"
+setuptools-scm = "*"
+twine = ">=1.11.0"
+wheel = ">=0.31.1"
+black = { path = ".", develop = true, extras = ["d"] }
