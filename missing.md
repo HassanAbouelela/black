@@ -1,0 +1,11 @@
+- CHANGES.md in pypi main page
+- Mypyc
+- python version assert, though that's handled by poetry
+- scm_version
+- black primer is just broken
+- setup.py options:
+  - package_data
+  - zip_safe
+  - test_suite
+- Any links in the docs to `pyproject.toml` should reference `example-pyproject.toml`
+  instead.
